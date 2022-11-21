@@ -4,11 +4,11 @@ import 'package:intl/intl.dart';
 
 class HomePrinterScreen extends StatelessWidget {
   final List<Map<String, dynamic>> data = [
-    {'title': 'Cadbury Dairy Milk', 'price': 15, 'qty': 2},
-    {'title': 'Parle-G Gluco Biscut', 'price': 5, 'qty': 5},
-    {'title': 'Fresh Onion - 1KG', 'price': 20, 'qty': 1},
-    {'title': 'Fresh Sweet Lime', 'price': 20, 'qty': 5},
-    {'title': 'Maggi', 'price': 10, 'qty': 5},
+    {'title': 'فرشة اواني', 'price': 25, 'qty': 2},
+    {'title': 'مروحة ستاند ', 'price': 430, 'qty': 5},
+    {'title': 'مكنة قهوة', 'price': 1800, 'qty': 1},
+    {'title': 'مروحة حائط', 'price': 1850, 'qty': 5},
+    {'title': 'عجانه الماني 2000 وات', 'price': 1850, 'qty': 3},
   ];
 
   final f = NumberFormat("\$###,###.00", "en_US");
@@ -22,8 +22,8 @@ class HomePrinterScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Flutter - Thermal Printer'),
-        backgroundColor: Colors.redAccent,
+        title: Text('Pos -  Printer'),
+        backgroundColor: Colors.blue,
       ),
       body: Column(
         children: [
@@ -40,7 +40,7 @@ class HomePrinterScreen extends StatelessWidget {
                     ),
                   ),
                   subtitle: Text(
-                    "${f.format(data[i]['price'])} x ${data[i]['qty']}",
+                    "${f.format(data[i]['price'])} ",
                   ),
                   trailing: Text(
                     f.format(

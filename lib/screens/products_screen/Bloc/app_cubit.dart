@@ -1,4 +1,6 @@
 
+import 'dart:convert';
+
 import 'package:air_point/core/utils/network/dio_helper.dart';
 import 'package:air_point/core/utils/network/end_point.dart';
 import 'package:air_point/models/products_model.dart';
@@ -29,18 +31,32 @@ class AppCubit extends Cubit<AppStates> {
     emit(ShopChangeNavBarState());
   }
 
-
-  ProductsModel? productsModel;
+  List<ProductsModel> productsModels = [];
 
   void getCategoriesData() {
+    print('heheherheheheheh');
     DioHelper.getData(
-      url: getCategories,
+      url: '',
+      query: {
+        "status":"GetItem"
+      }
     ).then((value) {
-      debugPrint('Result==');
-      debugPrint(value.toString());
-      productsModel = ProductsModel.fromJson(value.data);
+      print(value.statusCode);
+      // debugPrint('Result==');
+       var xxx= jsonDecode(value.toString());
+      // debugPrint(xxx.toString());
+      for(var item in xxx){
+        var itemmmmm= ProductsModel.fromJson(item);
+        print(itemmmmm.name);
+        productsModels.add(itemmmmm);
+      }
+
+      print('length');
+      print(productsModels.length.toString());
       emit(ShopSuccessGetCategories());
     }).catchError((error) {
+      print('Erooror');
+      print(error.toString());
       emit(ShopErrorGetCategories());
     });
   }

@@ -37,9 +37,7 @@ class ProductScreen extends StatelessWidget {
               ),
             ],
           ),
-          body: Container(
-            width: 400,
-            height: 400,
+          body: SingleChildScrollView(
             child: Column(
               children: [
                 ListView.separated(
@@ -47,8 +45,8 @@ class ProductScreen extends StatelessWidget {
                   shrinkWrap: true,
                   physics: const BouncingScrollPhysics(),
                   separatorBuilder: (context, index) =>
-                      buildProductItem(AppCubit.get(context).productsModel!),
-                  itemCount: 10,
+                      buildProductItem(AppCubit.get(context).productsModels[index]),
+                  itemCount: AppCubit.get(context).productsModels.length,
                   itemBuilder: (context, index) => myDvider(),
                 ),
               ],
@@ -58,7 +56,6 @@ class ProductScreen extends StatelessWidget {
       },
     );
   }
-
   Widget buildProductItem(ProductsModel model) => Card(
         child: ListTile(
           title: Row(

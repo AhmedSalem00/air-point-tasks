@@ -22,8 +22,9 @@ class DioHelper {
   }) async {
     dio.options.headers = {
       'Content-Type': 'application/json',
-      'Authorization': token,
+      'Authorization': 'Basic dGVzdDp0ZXN0',
     };
+    print('gerttttt');
     return await dio.get(
       url,
       queryParameters: query,

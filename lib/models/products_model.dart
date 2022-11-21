@@ -2,7 +2,7 @@ class ProductsModel {
   String? id;
   String? name;
   String? groups;
-  Null? barcode;
+  String? barcode;
   String? price;
 
   ProductsModel({this.id, this.name, this.groups, this.barcode, this.price});
