@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:air_point/core/utils/network/dio_helper.dart';
 import 'package:air_point/core/utils/network/end_point.dart';
 import 'package:air_point/models/products_model.dart';
+import 'package:air_point/screens/home_screen/home_screen.dart';
 import 'package:air_point/screens/products_screen/products_screen.dart';
 import 'package:air_point/screens/reset_screen/home_printer_screen.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +20,7 @@ class AppCubit extends Cubit<AppStates> {
 
   int currentIndex = 0;
   List<Widget> screens = [
-    ProductScreen(),
+    HomeScreen(),
     HomePrinterScreen(),
   ];
   List<String> titles = [
@@ -27,7 +28,9 @@ class AppCubit extends Cubit<AppStates> {
     'Reset',
   ];
   void changeIndex(int index) {
+    print('ahmed 1 ');
     currentIndex = index;
+    print('ahmed');
     emit(ShopChangeNavBarState());
   }
 

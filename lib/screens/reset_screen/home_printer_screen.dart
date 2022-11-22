@@ -21,10 +21,6 @@ class HomePrinterScreen extends StatelessWidget {
     );
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Pos -  Printer'),
-        backgroundColor: Colors.blue,
-      ),
       body: Column(
         children: [
           Expanded(

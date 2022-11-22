@@ -8,6 +8,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../models/products_model.dart';
 
 class ProductScreen extends StatelessWidget {
+  var scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AppCubit, AppStates>(
@@ -15,6 +17,7 @@ class ProductScreen extends StatelessWidget {
       builder: (context, state) {
         AppCubit cubit = AppCubit.get(context);
         return Scaffold(
+          key: scaffoldKey,
           appBar: AppBar(
             title: Text(
               cubit.titles[cubit.currentIndex],
@@ -24,7 +27,9 @@ class ProductScreen extends StatelessWidget {
             type: BottomNavigationBarType.fixed,
             currentIndex: cubit.currentIndex,
             onTap: (index) {
-              cubit.changeIndex(index);
+              print(00000000);
+               cubit.changeIndex(index);
+               print(00000000);
             },
             items: [
               BottomNavigationBarItem(
@@ -37,65 +42,11 @@ class ProductScreen extends StatelessWidget {
               ),
             ],
           ),
-          body: SingleChildScrollView(
-            child: Column(
-              children: [
-                ListView.separated(
-                  scrollDirection: Axis.vertical,
-                  shrinkWrap: true,
-                  physics: const BouncingScrollPhysics(),
-                  separatorBuilder: (context, index) =>
-                      buildProductItem(AppCubit.get(context).productsModels[index]),
-                  itemCount: AppCubit.get(context).productsModels.length,
-                  itemBuilder: (context, index) => myDvider(),
-                ),
-              ],
-            ),
-          ),
+          body: cubit.screens[cubit.currentIndex],
+
         );
       },
     );
   }
-  Widget buildProductItem(ProductsModel model) => Card(
-        child: ListTile(
-          title: Row(
-            children: [
-              Container(
-                height: 60,
-                width: 60,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  color: Colors.grey[300],
-                ),
-                child: Center(
-                  child: Text(
-                    model.id.toString(),
-                    style: TextStyle(
-                      fontSize: 10,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(width: 15.0),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  children: [
-                    Text(
-                      model.name.toString(),
-                      style: TextStyle(fontWeight: FontWeight.w700),
-                    ),
-                    Text(
-                      model.groups.toString(),
-                      style: TextStyle(fontWeight: FontWeight.w700),
-                    ),
-                    Text(model.price.toString()),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-      );
+
 }
