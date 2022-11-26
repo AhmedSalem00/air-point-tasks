@@ -1,10 +1,12 @@
+import 'package:air_point/models/products_model.dart';
 import 'package:bluetooth_print/bluetooth_print.dart';
 import 'package:bluetooth_print/bluetooth_print_model.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class PrintPage extends StatefulWidget {
-  final List<Map<String, dynamic>> data;
+  final List<ProductsModel> data;
+
   PrintPage(this.data);
 
   @override
@@ -15,7 +17,7 @@ class _PrintPageState extends State<PrintPage> {
   BluetoothPrint bluetoothPrint = BluetoothPrint.instance;
   List<BluetoothDevice> _devices = [];
   String _devicesMsg = "";
-  final f = NumberFormat("\$###,###.00", "en_US");
+  final f = NumberFormat();
 
   @override
   void initState() {
@@ -44,11 +46,11 @@ class _PrintPageState extends State<PrintPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Select Printer'),
-        backgroundColor: Colors.redAccent,
+        backgroundColor: Colors.blue,
       ),
       body: _devices.isEmpty
           ? Center(
-              child: Text(_devicesMsg ?? ''),
+              child: Text(_devicesMsg),
             )
           : ListView.builder(
               itemCount: _devices.length,
@@ -65,10 +67,9 @@ class _PrintPageState extends State<PrintPage> {
             ),
     );
   }
+
   Future<void> _startPrint(BluetoothDevice device) async {
     if (device != null && device.address != null) {
-      await bluetoothPrint.connect(device);
-
       Map<String, dynamic> config = Map();
       List<LineText> list = [];
 
@@ -88,18 +89,8 @@ class _PrintPageState extends State<PrintPage> {
         list.add(
           LineText(
             type: LineText.TYPE_TEXT,
-            content: widget.data[i]['title'],
+            content: widget.data[i].name,
             weight: 0,
-            align: LineText.ALIGN_LEFT,
-            linefeed: 1,
-          ),
-        );
-
-        list.add(
-          LineText(
-            type: LineText.TYPE_TEXT,
-            content:
-                "${f.format(this.widget.data[i]['price'])} x ${this.widget.data[i]['qty']}",
             align: LineText.ALIGN_LEFT,
             linefeed: 1,
           ),

@@ -24,7 +24,7 @@ class DioHelper {
       'Content-Type': 'application/json',
       'Authorization': 'Basic dGVzdDp0ZXN0',
     };
-    print('gerttttt');
+    // print('gerttttt');
     return await dio.get(
       url,
       queryParameters: query,
@@ -41,7 +41,11 @@ class DioHelper {
       'Content-Type': 'application/json',
     };
 
-    return await dio.post(url, queryParameters: query, data: data);
+    return await dio.post(
+        url,
+        queryParameters: query,
+        data: data
+    );
   }
 }
 

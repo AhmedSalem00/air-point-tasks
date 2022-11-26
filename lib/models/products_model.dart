@@ -5,7 +5,8 @@ class ProductsModel {
   String? barcode;
   String? price;
 
-  ProductsModel({this.id, this.name, this.groups, this.barcode, this.price});
+
+
 
   ProductsModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -25,7 +26,3 @@ class ProductsModel {
     return data;
   }
 }
-
-
-
-
