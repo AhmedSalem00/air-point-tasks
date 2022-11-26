@@ -12,7 +12,11 @@
 
 # #-Screen shots
 
-![products](https://user-images.githubusercontent.com/93947402/203125271-02524677-681b-4e82-938f-234e80f5d4eb.png)
+![5d662d70-d089-4fc0-8ed1-203393def4d8](https://user-images.githubusercontent.com/93947402/204067129-6a9944ac-d313-4af9-8bc3-ed431dc03136.jpg)
 
-![printer](https://user-images.githubusercontent.com/93947402/203124006-7cd870ab-801d-400f-83ec-daa7aecc0bd3.png)
+
+
+
+https://user-images.githubusercontent.com/93947402/204067138-b26f8cea-b846-4041-a2eb-4e3852f31cfe.mp4
+
 
